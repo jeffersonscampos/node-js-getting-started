@@ -12,7 +12,8 @@ const path = require('path')
   
   const express = require('express');
   const app = express();
-  const MongoClient = require('mongodb').MongoClient;
+  //const MongoClient = require('mongodb').MongoClient;
+  var MongoClient = require('mongoose');
   const assert = require('assert');
   const bodyParser = require('body-parser');
   
@@ -31,7 +32,7 @@ const path = require('path')
   app.use('/js', express.static(__dirname + '/js/jquery-3.5.1'));
   app.use('/js', express.static(__dirname + '/js/bootstrap-4.5.3-dist'));
   
-  MongoClient.connect(url, {useNewUrlParser: true}, function(err, client){
+  MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, function(err, client){
       assert.equal(null, err);
       console.log('banco de dados conectado com sucesso!');
   
