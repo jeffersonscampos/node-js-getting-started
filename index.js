@@ -22,7 +22,7 @@
   
   const jsonParser = bodyParser.json();
   const urlencodedParser  = bodyParser.urlencoded({extented: false});
-  
+
   app.use(jsonParser);
   app.use(urlencodedParser );
   app.use('/css', express.static(__dirname + '/css'));
@@ -40,7 +40,14 @@
   
   //app.listen(3000);
   const PORTA = process.env.PORT || 3000;
+  
+  app.use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  
   app.listen(PORTA, () => console.log(`Listening on ${ PORT }`));
+
   
   console.log('servidor rodando em localhost:3000');
   
