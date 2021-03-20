@@ -40,6 +40,7 @@ const path = require('path')
   
   //app.listen(3000);
   const PORTA = process.env.PORT || 3000;
+  const PORT  = process.env.PORT || 3000;
   
   app.use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
